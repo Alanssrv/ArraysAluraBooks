@@ -1,11 +1,14 @@
 const elemSecaoLivros = document.getElementById('livros');
+const elemTotalLivrosDisponiveis = document.getElementById('valor_total_livros_disponiveis');
 
 function exibirLivros(livros) {
+    elemTotalLivrosDisponiveis.innerHTML = '';
     elemSecaoLivros.innerHTML = '';
     livros.forEach(livro => {
+        let livroDisponivel = livro.quantidade > 0 ? '' : 'indisponivel';
         elemSecaoLivros.innerHTML += `
             <div class="livro">
-            <img class="livro__imagens" src="${livro.imagem}" alt="${livro.alt}" />
+            <img class="livro__imagens ${livroDisponivel}" src="${livro.imagem}" alt="${livro.alt}" />
             <h2 class="livro__titulo">
                 ${livro.titulo}
             </h2>
